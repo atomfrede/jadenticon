@@ -5,7 +5,7 @@
 
 # Jadenticon
 
-Jadenticon is a simple java wrapper for the [Jdenticon](https://jdenticon.com/) javascript library.
+Jadenticon is a simple java wrapper for the [Jdenticon](https://jdenticon.com/) javascript library to create nice looking, random identicons.
 
 ## Get It
 
@@ -47,3 +47,13 @@ String rawSvgWithSize = Jadenticon.from("Jane Doe").withSize(555).toSvg();
 File svgFile = Jadenticon.from("Jane Doe").file("janedoe");
 
 ```
+
+## Example
+
+![example jdenticon][example]
+
+[example]: https://github.com/atomfrede/jadenticon/raw/master/example.png "Sample identicon"
+
+## License
+
+Apache-2.0 © [Frederik Hahne](http://atomfrede.github.io/shiny-adventure/)

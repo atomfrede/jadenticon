@@ -1,6 +1,11 @@
+plugins {
+    id "com.cinnober.gradle.semver-git" version "2.2.2"
+}
+
 group 'com.github.atomfrede'
 version '0.0.1-SNAPSHOT'
 
+apply plugin 'com.cinnober.gradle.semver-git'
 apply plugin: 'java'
 
 apply from: 'gradle/codeQuality.gradle'

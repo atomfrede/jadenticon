@@ -17,6 +17,8 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.3.0'
 }
 
+check.dependsOn jacocoTestReport
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.11'
 }

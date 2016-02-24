@@ -1,0 +1,18 @@
+apply plugin: 'jacoco'
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
+
+findbugs {
+    ignoreFailures = true
+    toolVersion = '3.0.1'
+}
+
+checkstyle {
+    configFile = new File(rootDir, "config/checkstyle/checkstyle.xml")
+    ignoreFailures = true
+    toolVersion = '6.15'
+}
+
+jacoco {
+    toolVersion = '0.7.6.201602180812'
+}

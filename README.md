@@ -43,7 +43,7 @@ String rawSvg = Jadenticon.from("Jane Doe").toSvg();
 // Create a jdenticon with size 555 and padding 0.08
 String rawSvgWithSize = Jadenticon.from("Jane Doe").withSize(555).toSvg();
 
-// You can save it directly to a file
-File svgFile = Jadenticon.from("Jane Doe").file("janedoe.svg");
+// You can save it directly to a file, the .svg prefix is added automatically
+File svgFile = Jadenticon.from("Jane Doe").file("janedoe");
 
 ```

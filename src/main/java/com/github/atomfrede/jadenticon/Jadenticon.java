@@ -52,16 +52,28 @@ public class Jadenticon {
 
     public File file() throws IOException {
 
-        File f = new File("jdenticon_" + hash + ".svg");
+        File f = createTempFile();
         FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
         return f;
     }
 
     public File file(String fileName) throws IOException {
 
-        File f = new File(fileName);
+        File f = createTempFile(fileName);
         FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
         return f;
+    }
+
+    private File createTempFile() throws IOException {
+        File file = File.createTempFile("jdenticon", ".svg");
+        file.deleteOnExit();
+        return file;
+    }
+
+    private File createTempFile(String name) throws IOException {
+        File file = File.createTempFile(name, ".svg");
+        file.deleteOnExit();
+        return file;
     }
 
 

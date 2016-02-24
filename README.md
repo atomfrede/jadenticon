@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.github.atomfrede:jadenticon:1.0.0'
+   compile 'com.github.atomfrede:jadenticon:1.0.1'
 }
 ```
 
@@ -30,7 +30,7 @@ dependencies {
 <dependency>
     <groupId>com.github.atomfrede</groupId>
 	<artifactId>jadenticon</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 </dependency>
 ```
 
@@ -39,4 +39,11 @@ dependencies {
 ```java
 // Create default jdenticon (as svg) with size 300 and padding 0.08
 String rawSvg = Jadenticon.from("Jane Doe").toSvg();
+
+// Create a jdenticon with size 555 and padding 0.08
+String rawSvgWithSize = Jadenticon.from("Jane Doe").withSize(555).toSvg();
+
+// You can save it directly to a file
+File svgFile = Jadenticon.from("Jane Doe").file("janedoe.svg");
+
 ```

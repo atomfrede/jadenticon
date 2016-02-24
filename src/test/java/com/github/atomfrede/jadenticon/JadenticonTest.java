@@ -21,6 +21,16 @@ public class JadenticonTest {
     }
 
     @Test
+    public void shouldGetJadenticonWithDefaultsForName() {
+
+        String svg = Jadenticon.from("Jane Doe").toSvg();
+
+        assertThat(svg).isNotNull();
+        assertThat(svg).isNotEmpty();
+        assertThat(svg).startsWith("<svg");
+    }
+
+    @Test
     public void shouldGetJadenticonWithSize() {
 
         String svg = Jadenticon.from("ff8adece0631821959f443c9d956fc39").withSize(555).toSvg();

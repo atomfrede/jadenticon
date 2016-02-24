@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 public class Jadenticon {
 
@@ -20,8 +21,13 @@ public class Jadenticon {
     }
 
     public static Jadenticon from(String text) {
-        //TODO build a stable hash from the given text;
-        return new Jadenticon(text);
+
+        try {
+            return new Jadenticon(Hash.generateHash(text));
+        } catch (NoSuchAlgorithmException e) {
+
+            throw new RuntimeException("Unable to generate hash.", e);
+        }
     }
 
     public Jadenticon withSize(int size) {

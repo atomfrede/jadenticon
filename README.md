@@ -5,7 +5,7 @@
 
 # Jadenticon
 
-Jadenticon is a simple java wrapper for the [Jedenticon](https://jdenticon.com/) javascript library.
+Jadenticon is a simple java wrapper for the [Jdenticon](https://jdenticon.com/) javascript library.
 
 ## Get It
 

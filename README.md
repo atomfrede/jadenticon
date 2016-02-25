@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/atomfrede/jadenticon.svg?branch=master)](https://travis-ci.org/atomfrede/jadenticon)
-[![Latest Release](https://jitpack.io/v/atomfrede/jadenticon.svg)](https://jitpack.io/#atomfrede/jadenticon)
+[![Latest Release](https://jitpack.io/v/atomfrede/jadenticon.svg?style=flat-square)](https://jitpack.io/#atomfrede/jadenticon)
 [![codecov.io](https://codecov.io/github/atomfrede/jadenticon/coverage.svg?branch=master)](https://codecov.io/github/atomfrede/jadenticon?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/56ce019e6b21e5003abcd54c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56ce019e6b21e5003abcd54c)
 

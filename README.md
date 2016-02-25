@@ -11,6 +11,8 @@ Jadenticon is a simple java wrapper for the [Jdenticon](https://jdenticon.com/) 
 
 Jadenticon is available on [Jitpack](https://jitpack.io/).
 
+**Gradle**
+
 ```groovy
 repositories {
     maven { url "https://jitpack.io" }
@@ -20,6 +22,8 @@ dependencies {
    compile 'com.github.atomfrede:jadenticon:1.0.2'
 }
 ```
+
+**Maven**
 
 ```xml
 <repository>
@@ -41,10 +45,18 @@ dependencies {
 String rawSvg = Jadenticon.from("Jane Doe").toSvg();
 
 // Create a jdenticon with size 555 and padding 0.08
+// Restriction: 30 <= size
 String rawSvgWithSize = Jadenticon.from("Jane Doe").withSize(555).toSvg();
 
-// You can save it directly to a file, the .svg prefix is added automatically
+// Create a jdenticon with size 300 and padding 0.1
+// Restriction: 0 <= padding <= 0.5
+String rawSvgWithPadding = Jadenticon.from("John Doe").withPadding(0.1);
+
+// You can save it directly to a svg file, the .svg prefix is added automatically
 File svgFile = Jadenticon.from("Jane Doe").file("janedoe");
+
+// If you don't care about the file you don't need to provide any
+File svgFile2 = Jadenticon.from("John Doe").file();
 
 ```
 

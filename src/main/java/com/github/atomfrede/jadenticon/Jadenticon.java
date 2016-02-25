@@ -66,12 +66,14 @@ public class Jadenticon {
     public File file(String fileName) throws IOException {
 
         File f = createTempFile(fileName);
+        File result = new File(f.getParentFile(), "example.svg");
         FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
-        return f;
+        FileUtils.moveFile(f, result);
+        return result;
     }
 
     private File createTempFile() throws IOException {
-        File file = File.createTempFile("jdenticon", ".svg");
+        File file = createTempFile("jdenticon-" + this.hash);
         file.deleteOnExit();
         return file;
     }

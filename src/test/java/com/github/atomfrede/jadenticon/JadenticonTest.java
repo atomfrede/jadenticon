@@ -48,16 +48,23 @@ public class JadenticonTest {
         assertThat(result).isNotNull();
         assertThat(result).exists();
         assertThat(result).isFile();
+        assertThat(result.getName()).doesNotStartWith("jdenticon");
+        assertThat(result.getName()).endsWith(".svg");
+        assertThat(result.getName()).isEqualTo("example.svg");
     }
 
     @Test
     public void shouldGetFile() throws IOException {
 
-        File result = Jadenticon.from("ff8adece0631821959f443c9d956fc39").withSize(555).file();
+        File result = Jadenticon.from("Octo Cat").withSize(555).file();
 
         assertThat(result).isNotNull();
         assertThat(result).exists();
         assertThat(result).isFile();
+        assertThat(result.getName()).startsWith("jdenticon");
+        assertThat(result.getName()).endsWith(".svg");
+        assertThat(result.getName()).isNotEqualTo("jdenticon-019e230c962d84d4219d2176f73daf58d611b87fdc1d9b257cfe7ef1aaca54ec973551241045803171.svg");
+
     }
 
     @Test

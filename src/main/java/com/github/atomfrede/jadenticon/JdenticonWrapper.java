@@ -1,12 +1,14 @@
 package com.github.atomfrede.jadenticon;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.File;
+import java.io.InputStream;
 
 public class JdenticonWrapper {
 
@@ -21,7 +23,8 @@ public class JdenticonWrapper {
 
             invocable = (Invocable) nashorn;
 
-            String script = FileUtils.readFileToString(new File(getClass().getResource("/jdenticon.js").toURI()));
+            InputStream scriptStream = getClass().getResourceAsStream("/jdenticon.js");
+            String script = IOUtils.toString(scriptStream);
             nashorn.eval(script);
 
             jdenticon = nashorn.eval("jdenticon");

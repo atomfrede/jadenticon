@@ -1,13 +1,11 @@
 package com.github.atomfrede.jadenticon;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.io.File;
 import java.io.InputStream;
 
 public class JdenticonWrapper {

@@ -23,6 +23,8 @@ public class JdenticonWrapper {
 
             InputStream scriptStream = getClass().getResourceAsStream("/jdenticon.js");
             String script = IOUtils.toString(scriptStream);
+            scriptStream.close();
+            
             nashorn.eval(script);
 
             jdenticon = nashorn.eval("jdenticon");

@@ -21,7 +21,7 @@ public class JdenticonWrapper {
 
             invocable = (Invocable) nashorn;
 
-            String script = FileUtils.readFileToString(new File("src/main/resources/jdenticon.js"));
+            String script = FileUtils.readFileToString(new File(getClass().getResource("/jdenticon.js").toURI()));
             nashorn.eval(script);
 
             jdenticon = nashorn.eval("jdenticon");

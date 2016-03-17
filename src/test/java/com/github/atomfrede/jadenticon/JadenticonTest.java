@@ -42,7 +42,6 @@ public class JadenticonTest {
 
     @Test
     public void shouldGetFileWithName() throws IOException {
-
         File result = Jadenticon.from("ff8adece0631821959f443c9d956fc39").withSize(555).file("example");
 
         assertThat(result).isNotNull();
@@ -51,6 +50,8 @@ public class JadenticonTest {
         assertThat(result.getName()).doesNotStartWith("jdenticon");
         assertThat(result.getName()).endsWith(".svg");
         assertThat(result.getName()).isEqualTo("example.svg");
+
+        result.delete();
     }
 
     @Test

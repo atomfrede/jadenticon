@@ -1,5 +1,7 @@
 package com.github.atomfrede.jadenticon;
 
+import org.apache.batik.transcoder.TranscoderException;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -66,6 +68,8 @@ public class JadenticonTest {
         assertThat(result.getName()).endsWith(".svg");
         assertThat(result.getName()).isNotEqualTo("jdenticon-019e230c962d84d4219d2176f73daf58d611b87fdc1d9b257cfe7ef1aaca54ec973551241045803171.svg");
 
+        result.delete();
+
     }
 
     @Test
@@ -89,5 +93,31 @@ public class JadenticonTest {
             Jadenticon.from("ff8adece0631821959f443c9d956fc39").withPadding(-1.0);
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("Padding must be greater than 0.0");
+    }
+
+    @Test
+    public void shouldCreatePngWithRandomFileName() throws IOException, TranscoderException {
+
+        File png = Jadenticon.from("Hello World!").png();
+
+        assertThat(png).isNotNull();
+        assertThat(png).isFile();
+        assertThat(png).exists();
+        assertThat(png).canRead();
+
+        png.delete();
+    }
+
+    @Test
+    public void shouldCreatePngWithFileName() throws IOException, TranscoderException {
+
+        File png = Jadenticon.from("Hello World!").png("HelloWorld");
+
+        assertThat(png).isNotNull();
+        assertThat(png).isFile();
+        assertThat(png).exists();
+        assertThat(png).canRead();
+
+        png.delete();
     }
 }

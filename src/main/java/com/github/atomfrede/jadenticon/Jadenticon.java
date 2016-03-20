@@ -1,19 +1,29 @@
 package com.github.atomfrede.jadenticon;
 
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.security.NoSuchAlgorithmException;
 
 public class Jadenticon {
 
-    protected final String hash;
-    protected JdenticonWrapper jdenticonWrapper;
-    protected int size;
-    protected double padding;
+    private enum FileType {
+        SVG, PNG
+    }
 
-    protected Jadenticon(String hash) {
+    final String hash;
+    private JdenticonWrapper jdenticonWrapper;
+    int size;
+    double padding;
+
+    public Jadenticon(String hash) {
         jdenticonWrapper = new JdenticonWrapper();
         this.hash = hash;
         this.size = 300;
@@ -58,31 +68,82 @@ public class Jadenticon {
 
     public File file() throws IOException {
 
-        File f = createTempFile();
+        File f = createTempFile(FileType.SVG);
         FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
         return f;
     }
 
     public File file(String fileName) throws IOException {
 
-        File f = createTempFile(fileName);
-        File result = new File(f.getParentFile(), "example.svg");
+        File f = createTempFile(fileName, FileType.SVG);
+        File result = new File(f.getParentFile(), fileName + ".svg");
         FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
         FileUtils.moveFile(f, result);
         return result;
     }
 
-    private File createTempFile() throws IOException {
-        File file = createTempFile("jdenticon-" + this.hash);
+    public File png() throws IOException, TranscoderException {
+
+        PNGTranscoder pngTranscoder = new PNGTranscoder();
+
+        TranscoderInput input = new TranscoderInput(this.file().toURI().toString());
+
+        File outputfile = createTempFile("jdenticon-" + this.hash, FileType.PNG);
+
+        OutputStream ostream = new FileOutputStream(outputfile);
+        TranscoderOutput output = new TranscoderOutput(ostream);
+
+        pngTranscoder.transcode(input, output);
+
+        ostream.flush();
+        ostream.close();
+
+        return outputfile;
+    }
+
+    public File png(String filename) throws IOException, TranscoderException {
+
+        PNGTranscoder pngTranscoder = new PNGTranscoder();
+
+        TranscoderInput input = new TranscoderInput(this.file().toURI().toString());
+
+        File outputfile = createTempFile(filename, FileType.PNG);
+
+        OutputStream ostream = new FileOutputStream(outputfile);
+        TranscoderOutput output = new TranscoderOutput(ostream);
+
+        pngTranscoder.transcode(input, output);
+
+        ostream.flush();
+        ostream.close();
+
+        return outputfile;
+    }
+
+    private File createTempFile(FileType fileType) throws IOException {
+        File file = createTempFile("jdenticon-" + this.hash, fileType);
         file.deleteOnExit();
         return file;
     }
 
-    private File createTempFile(String name) throws IOException {
-        File file = File.createTempFile(name, ".svg");
+    private File createTempFile(String name, FileType fileType) throws IOException {
+
+        File file;
+
+        switch (fileType) {
+            case SVG:
+                file = File.createTempFile(name, ".svg");
+                break;
+            case PNG:
+                file = File.createTempFile(name, ".png");
+                break;
+            default:
+                file = File.createTempFile(name, ".svg");
+                break;
+        }
+
         file.deleteOnExit();
         return file;
     }
-
 
 }

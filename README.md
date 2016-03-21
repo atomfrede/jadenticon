@@ -53,11 +53,15 @@ String rawSvgWithSize = Jadenticon.from("Jane Doe").withSize(555).toSvg();
 // Restriction: 0 <= padding <= 0.5
 String rawSvgWithPadding = Jadenticon.from("John Doe").withPadding(0.1);
 
-// You can save it directly to a svg file, the .svg prefix is added automatically
+// You can save it directly to a svg file, the .svg suffix is added automatically
 File svgFile = Jadenticon.from("Jane Doe").file("janedoe");
+
+// You can save it directly to a png file, the .png suffix is added automatically
+File pngFile = Jadenticon.from("Janet Doe").png("janetdoe");
 
 // If you don't care about the file you don't need to provide any
 File svgFile2 = Jadenticon.from("John Doe").file();
+File pngFile2 = Jadenticon.from("Johnny Doe").png();
 
 ```
 

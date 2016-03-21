@@ -1,7 +1,6 @@
 package com.github.atomfrede.jadenticon;
 
 import org.apache.batik.transcoder.TranscoderException;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;

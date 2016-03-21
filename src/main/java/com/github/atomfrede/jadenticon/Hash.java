@@ -3,9 +3,9 @@ package com.github.atomfrede.jadenticon;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Hash {
+class Hash {
 
-    public static String generateHash(String text) throws NoSuchAlgorithmException {
+    static String generateHash(String text) throws NoSuchAlgorithmException {
 
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(text.getBytes());

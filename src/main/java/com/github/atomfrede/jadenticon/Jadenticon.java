@@ -23,7 +23,7 @@ public class Jadenticon {
     int size;
     double padding;
 
-    public Jadenticon(String hash) {
+    private Jadenticon(String hash) {
         jdenticonWrapper = new JdenticonWrapper();
         this.hash = hash;
         this.size = 300;

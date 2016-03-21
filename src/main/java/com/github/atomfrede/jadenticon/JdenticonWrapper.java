@@ -8,12 +8,12 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.InputStream;
 
-public class JdenticonWrapper {
+class JdenticonWrapper {
 
     private Object jdenticon;
     private Invocable invocable;
 
-    public JdenticonWrapper() {
+    JdenticonWrapper() {
 
         try {
             ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
@@ -35,7 +35,7 @@ public class JdenticonWrapper {
 
     }
 
-    public String getSvg(Jadenticon jadenticon) {
+    String getSvg(Jadenticon jadenticon) {
 
         try {
             return (String) invocable.invokeMethod(jdenticon, "toSvg", jadenticon.hash, jadenticon.size, jadenticon.padding);

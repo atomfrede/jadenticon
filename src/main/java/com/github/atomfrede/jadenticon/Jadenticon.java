@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.NoSuchAlgorithmException;
 
 public class Jadenticon {
 
@@ -32,12 +31,7 @@ public class Jadenticon {
 
     public static Jadenticon from(String text) {
 
-        try {
-            return new Jadenticon(Hash.generateHash(text));
-        } catch (NoSuchAlgorithmException e) {
-
-            throw new RuntimeException("Unable to generate hash.", e);
-        }
+        return new Jadenticon(Hash.generateHash(text));
     }
 
     public Jadenticon withSize(int size) {
@@ -84,24 +78,21 @@ public class Jadenticon {
 
     public File png() throws IOException, TranscoderException {
 
-        PNGTranscoder pngTranscoder = new PNGTranscoder();
-
-        TranscoderInput input = new TranscoderInput(this.file().toURI().toString());
-
-        File outputfile = createTempFile("jdenticon-" + this.hash, FileType.PNG);
-
-        OutputStream ostream = new FileOutputStream(outputfile);
-        TranscoderOutput output = new TranscoderOutput(ostream);
-
-        pngTranscoder.transcode(input, output);
-
-        ostream.flush();
-        ostream.close();
-
-        return outputfile;
+        return transcodeSvgToPng("jdenticon-" + this.hash);
     }
 
     public File png(String filename) throws IOException, TranscoderException {
+
+        return transcodeSvgToPng(filename);
+    }
+
+    private File createTempFile(FileType fileType) throws IOException {
+        File file = createTempFile("jdenticon-" + this.hash, fileType);
+        file.deleteOnExit();
+        return file;
+    }
+
+    private File transcodeSvgToPng(String filename) throws IOException, TranscoderException {
 
         PNGTranscoder pngTranscoder = new PNGTranscoder();
 
@@ -118,12 +109,6 @@ public class Jadenticon {
         ostream.close();
 
         return outputfile;
-    }
-
-    private File createTempFile(FileType fileType) throws IOException {
-        File file = createTempFile("jdenticon-" + this.hash, fileType);
-        file.deleteOnExit();
-        return file;
     }
 
     private File createTempFile(String name, FileType fileType) throws IOException {

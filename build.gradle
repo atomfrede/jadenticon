@@ -1,5 +1,5 @@
 group 'com.github.atomfrede'
-version '1.2.0-RELEASE'
+version '1.2.1-SNAPSHOT'
 
 apply plugin: 'java'
 

@@ -10,10 +10,11 @@ import java.io.InputStream;
 
 class JdenticonWrapper {
 
+    public static JdenticonWrapper instance = new JdenticonWrapper();
     private Object jdenticon;
     private Invocable invocable;
 
-    JdenticonWrapper() {
+    private JdenticonWrapper() {
 
         try {
             ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
@@ -33,6 +34,10 @@ class JdenticonWrapper {
             throw new RuntimeException("Unable to setup nashorn and jdenticon script.", e);
         }
 
+    }
+
+    public static JdenticonWrapper getInstance() {
+        return instance;
     }
 
     String getSvg(Jadenticon jadenticon) {

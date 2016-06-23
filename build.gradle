@@ -1,5 +1,5 @@
 group 'com.github.atomfrede'
-version '1.1.1-RELEASE'
+version '1.2.0-RELEASE'
 
 apply plugin: 'java'
 
@@ -23,5 +23,5 @@ dependencies {
 check.dependsOn jacocoTestReport
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.13'
+    gradleVersion = '2.14'
 }

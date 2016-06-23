@@ -13,17 +13,12 @@ import java.io.OutputStream;
 
 public class Jadenticon {
 
-    private enum FileType {
-        SVG, PNG
-    }
-
     final String hash;
-    private JdenticonWrapper jdenticonWrapper;
     int size;
     double padding;
-
+    private JdenticonWrapper jdenticonWrapper;
     private Jadenticon(String hash) {
-        jdenticonWrapper = new JdenticonWrapper();
+        jdenticonWrapper = JdenticonWrapper.getInstance();
         this.hash = hash;
         this.size = 300;
         this.padding = 0.08;
@@ -129,6 +124,10 @@ public class Jadenticon {
 
         file.deleteOnExit();
         return file;
+    }
+
+    private enum FileType {
+        SVG, PNG
     }
 
 }

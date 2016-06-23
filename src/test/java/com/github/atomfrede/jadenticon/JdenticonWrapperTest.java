@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class JdenticonWrapperTest {
 
-    JdenticonWrapper wrapper = new JdenticonWrapper();
+    JdenticonWrapper wrapper = JdenticonWrapper.getInstance();
 
     @Test
     public void shouldCreateSvgWithDefaults() {

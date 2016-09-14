@@ -24,3 +24,7 @@ build
 out
 gradle.properties
 gradle-app.setting
+
+#VS Code Settings
+*.log
+*.lck

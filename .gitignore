@@ -28,3 +28,8 @@ gradle-app.setting
 #VS Code Settings
 *.log
 *.lck
+
+.classpath
+.project
+.settings
+bin

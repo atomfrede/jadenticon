@@ -10,13 +10,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 
 public class Jadenticon {
 
-    final String hash;
-    int size;
-    double padding;
+    private final String hash;
+    private int size;
+    private double padding;
     private JdenticonWrapper jdenticonWrapper;
+
     private Jadenticon(String hash) {
         jdenticonWrapper = JdenticonWrapper.getInstance();
         this.hash = hash;
@@ -58,7 +60,7 @@ public class Jadenticon {
     public File file() throws IOException {
 
         File f = createTempFile(FileType.SVG);
-        FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
+        FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this), Charset.forName("UTF-8"));
         return f;
     }
 
@@ -66,7 +68,7 @@ public class Jadenticon {
 
         File f = createTempFile(fileName, FileType.SVG);
         File result = new File(f.getParentFile(), fileName + ".svg");
-        FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this));
+        FileUtils.writeStringToFile(f, jdenticonWrapper.getSvg(this), Charset.forName("UTF-8"));
         FileUtils.moveFile(f, result);
         return result;
     }
@@ -79,6 +81,18 @@ public class Jadenticon {
     public File png(String filename) throws IOException, TranscoderException {
 
         return transcodeSvgToPng(filename);
+    }
+
+    String getHash() {
+        return hash;
+    }
+
+    int getSize() {
+        return size;
+    }
+
+    double getPadding() {
+        return padding;
     }
 
     private File createTempFile(FileType fileType) throws IOException {

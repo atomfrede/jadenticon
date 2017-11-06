@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 class Hash {
 
-    static String generateHash(String text) {
+    protected static String generateHash(String text) {
 
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");

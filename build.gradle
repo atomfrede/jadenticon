@@ -1,8 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
+    }
+}
+
+plugins {
+    id 'pl.allegro.tech.build.axion-release' version '1.8.1'
+}
+
+scmVersion {
+    tag {
+        prefix = ''
+    }
+}
 group 'com.github.atomfrede'
-version '1.4.0'
+//version '1.4.0'
 
 apply plugin: 'java'
-
+apply plugin: 'com.github.ben-manes.versions'
 apply from: 'gradle/codeQuality.gradle'
 
 sourceCompatibility = 1.8
@@ -12,7 +31,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
     compile group: 'org.apache.xmlgraphics', name: 'batik-transcoder', version: '1.9.1'
     compile group: 'org.apache.xmlgraphics', name: 'xmlgraphics-commons', version: '2.2'
     compile group: 'org.apache.xmlgraphics', name: 'batik-codec', version: '1.9.1'
@@ -20,8 +39,10 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
 }
 
+project.version = scmVersion.version
+
 check.dependsOn jacocoTestReport
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.2.1'
+    gradleVersion = '4.3'
 }

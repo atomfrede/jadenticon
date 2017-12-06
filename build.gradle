@@ -1,15 +1,6 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-    }
-}
-
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.8.1'
+    id 'com.github.ben-manes.versions' version '0.17.0'
 }
 
 scmVersion {
@@ -44,5 +35,5 @@ project.version = scmVersion.version
 check.dependsOn jacocoTestReport
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.3'
+    gradleVersion = '4.4'
 }

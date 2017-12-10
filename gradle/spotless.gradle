@@ -9,5 +9,9 @@ spotless {
 
     java {
         licenseHeaderFile 'header.java'
+        indentWithSpaces()
+        removeUnusedImports()
+
+        custom 'Lambda fix', { it.replace('} )', '})').replace('} ,', '},') }
     }
 }

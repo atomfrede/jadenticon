@@ -15,6 +15,7 @@ group 'com.github.atomfrede'
 apply plugin: 'java'
 apply plugin: 'com.github.ben-manes.versions'
 apply from: 'gradle/codeQuality.gradle'
+apply from: 'gradle/spotless.gradle'
 
 sourceCompatibility = 1.8
 
@@ -29,19 +30,6 @@ dependencies {
     compile group: 'org.apache.xmlgraphics', name: 'batik-codec', version: '1.9.1'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
-}
-
-
-
-spotless {
-    format 'misc', {
-        target '**/*.gradle', '**/*.md', '**/.gitignore'
-
-        trimTrailingWhitespace()
-        indentWithSpaces() // or spaces. Takes an integer argument if you don't like 4
-        endWithNewline()
-    }
-
 }
 
 project.version = scmVersion.version

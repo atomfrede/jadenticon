@@ -1,6 +1,7 @@
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.8.1'
     id 'com.github.ben-manes.versions' version '0.17.0'
+    id "com.diffplug.gradle.spotless" version "3.7.0"
 }
 
 scmVersion {
@@ -14,6 +15,7 @@ group 'com.github.atomfrede'
 apply plugin: 'java'
 apply plugin: 'com.github.ben-manes.versions'
 apply from: 'gradle/codeQuality.gradle'
+apply from: 'gradle/spotless.gradle'
 
 sourceCompatibility = 1.8
 

@@ -1,18 +1,26 @@
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.8.1'
     id 'com.github.ben-manes.versions' version '0.17.0'
+    id "com.diffplug.gradle.spotless" version "3.7.0"
 }
 
 scmVersion {
     tag {
         prefix = ''
     }
+    hooks {
+        pre 'fileUpdate', [
+            file: 'README.md', pattern: {v, c -> /<version>$v/}, replacement: {v, c -> "<version>$v"}
+        ]
+        pre 'fileUpdate', [
+            file: 'README.md', pattern: {v, c -> /com.github.atomfrede:jadenticon:$v/}, replacement: {v, c -> "com.github.atomfrede:jadenticon:$v"}
+        ]
+        pre 'commit'
+    }
 }
 ext.moduleName = 'com.github.atomfrede.jadenticon'
 
 group 'com.github.atomfrede'
-
-//version '1.4.0'
 
 apply plugin: 'java'
 apply plugin: 'com.github.ben-manes.versions'

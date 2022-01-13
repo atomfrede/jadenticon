@@ -32,8 +32,8 @@ dependencies {
 
 <dependency>
     <groupId>com.github.atomfrede</groupId>
-	<artifactId>jadenticon</artifactId>
-	<version>3.0.0</version>
+    <artifactId>jadenticon</artifactId>
+    <version>3.0.0</version>
 </dependency>
 ```
 

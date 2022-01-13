@@ -1,8 +1,6 @@
-[![Build Status](https://img.shields.io/travis/atomfrede/jadenticon.svg?style=flat-square)](https://travis-ci.org/atomfrede/jadenticon)
+![Build Status](https://github.com/atomfrede/jadenticon/actions/workflows/gradle-build.yml/badge.svg)
 [![Latest Release](https://jitpack.io/v/atomfrede/jadenticon.svg?style=flat-square)](https://jitpack.io/#atomfrede/jadenticon)
-[![Codacy](https://img.shields.io/codacy/763a55e6006647a1ab02d50ffb870869.svg?style=flat-square)](https://www.codacy.com/app/frederik-hahne/jadenticon/dashboard)
 [![Codecov branch](https://img.shields.io/codecov/c/github/atomfrede/jadenticon/master.svg?style=flat-square)](https://codecov.io/github/atomfrede/jadenticon?branch=master)
-[![Gitter](https://img.shields.io/gitter/room/atomfrede/jadenticon.js.svg?style=flat-square)](https://gitter.im/atomfrede/jadenticon)
 
 # Jadenticon
 

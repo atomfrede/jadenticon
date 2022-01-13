@@ -1,7 +1,15 @@
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.8.1'
-    id 'com.github.ben-manes.versions' version '0.17.0'
-    id "com.diffplug.gradle.spotless" version "3.7.0"
+    id 'java'
+    id 'jacoco'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
+    id "com.github.ben-manes.versions" version "0.41.0"
+    id "com.diffplug.spotless" version "6.0.2"
+    id "com.github.andygoossens.gradle-modernizer-plugin" version "1.6.1"
+    id 'com.adarshr.test-logger' version '3.1.0'
+}
+
+ext {
+    junitVersion = '5.8.2'
 }
 
 scmVersion {
@@ -18,27 +26,56 @@ scmVersion {
         pre 'commit'
     }
 }
+
+spotless {
+    format 'misc', {
+        target '**/*.gradle', '**/*.md', '**/*.adoc', '**/.gitignore'
+        targetExclude 'node_modules/**/*.*', ".gradle/**", "build/**/*.*", "target/**/*.*", "src/test/e2e/node_modules/**"
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+}
+
+test {
+    include '**/*Test.*'
+    exclude '**/*Spec.*', '**/*IT.*'
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
 ext.moduleName = 'com.github.atomfrede.jadenticon'
 
 group 'com.github.atomfrede'
 
-apply plugin: 'java'
-apply plugin: 'com.github.ben-manes.versions'
-apply from: 'gradle/codeQuality.gradle'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'commons-io', name: 'commons-io', version: '2.6'
-    compile group: 'org.apache.xmlgraphics', name: 'batik-transcoder', version: '1.9.1'
-    compile group: 'org.apache.xmlgraphics', name: 'xmlgraphics-commons', version: '2.2'
-    compile group: 'org.apache.xmlgraphics', name: 'batik-codec', version: '1.9.1'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
+    implementation "commons-io:commons-io:2.11.0"
+    implementation 'org.apache.xmlgraphics:batik-transcoder:1.14'
+    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.6'
+    implementation 'org.apache.xmlgraphics:batik-codec:1.14'
+    implementation 'org.openjdk.nashorn:nashorn-core:15.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation "com.tngtech.archunit:archunit-junit5-api:0.22.0"
+    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:0.22.0"
 }
 
 jar {
@@ -51,7 +88,3 @@ jar {
 project.version = scmVersion.version
 
 check.dependsOn jacocoTestReport
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.4'
-}

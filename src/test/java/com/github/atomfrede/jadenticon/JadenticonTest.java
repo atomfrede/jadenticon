@@ -1,7 +1,7 @@
 package com.github.atomfrede.jadenticon;
 
+import org.junit.jupiter.api.Test;
 import org.apache.batik.transcoder.TranscoderException;
-import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;

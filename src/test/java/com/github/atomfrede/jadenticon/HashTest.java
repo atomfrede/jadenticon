@@ -1,6 +1,7 @@
 package com.github.atomfrede.jadenticon;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.security.NoSuchAlgorithmException;
 

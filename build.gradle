@@ -86,6 +86,35 @@ jar {
     }
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = 'jadenticon'
+                description = 'Jadenticon is a simple java wrapper for the Jdenticon javascript library to create nice looking, random identicons.'
+                url = 'http://www.example.com/library'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'atomfrede'
+                        name = 'Frederik Hahne'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/atomfrede/jadenticon.git'
+                    developerConnection = 'scm:git:ssh://github.com/atomfrede/jadenticon.git'
+                }
+            }
+        }
+    }
+}
+
 project.version = scmVersion.version
 
 check.dependsOn jacocoTestReport

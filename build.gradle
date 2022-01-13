@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
-    id 'maven'
+    id 'maven-publish'
     id 'pl.allegro.tech.build.axion-release' version '1.13.6'
     id "com.github.ben-manes.versions" version "0.41.0"
     id "com.diffplug.spotless" version "6.0.2"

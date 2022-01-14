@@ -26,11 +26,6 @@ jobs:
               uses: codecov/codecov-action@v2
               with:
                 token: ${{ secrets.CODECOV_TOKEN }}
-                directory: ./build/reports/
-                fail_ci_if_error: true
-                files: ./jacocoTestReport.xml
-                flags: unittests
-                name: codecov-umbrella
-                path_to_write_report: ./coverage/codecov_report.txt
+                files: build/reports/jacoco/jacocoTestReport.xml
                 verbose: true
 

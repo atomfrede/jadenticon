@@ -1,0 +1,8 @@
+title: Jadenticon
+description: "Java wrapper for jdenticon "
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions

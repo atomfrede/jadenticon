@@ -86,6 +86,20 @@ jar {
     }
 }
 
+jacocoTestReport {
+//    executionData tasks.withType(Test)
+    executionData tasks.matching({
+        it.name.equals("integrationTest") || it.name.equals("test")
+    })
+    classDirectories.from = files(sourceSets.main.output.classesDirs)
+    sourceDirectories.from = files(sourceSets.main.java.srcDirs)
+    reports {
+        html.required = true
+        xml.required = true
+        csv.required = false
+    }
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {

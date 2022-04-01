@@ -3,10 +3,10 @@ plugins {
     id 'jacoco'
     id 'maven-publish'
     id 'pl.allegro.tech.build.axion-release' version '1.13.6'
-    id "com.github.ben-manes.versions" version "0.41.0"
-    id "com.diffplug.spotless" version "6.0.2"
+    id "com.github.ben-manes.versions" version "0.42.0"
+    id "com.diffplug.spotless" version "6.4.1"
     id "com.github.andygoossens.gradle-modernizer-plugin" version "1.6.1"
-    id 'com.adarshr.test-logger' version '3.1.0'
+    id 'com.adarshr.test-logger' version '3.2.0'
 }
 
 ext {
@@ -49,6 +49,8 @@ test {
 
 
 java {
+    withSourcesJar()
+    withJavadocJar()
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
@@ -70,13 +72,13 @@ repositories {
 dependencies {
     implementation "commons-io:commons-io:2.11.0"
     implementation 'org.apache.xmlgraphics:batik-transcoder:1.14'
-    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.6'
+    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.7'
     implementation 'org.apache.xmlgraphics:batik-codec:1.14'
     implementation 'org.openjdk.nashorn:nashorn-core:15.3'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     implementation 'org.assertj:assertj-core:3.22.0'
-    testImplementation "com.tngtech.archunit:archunit-junit5-api:0.22.0"
-    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:0.22.0"
+    testImplementation "com.tngtech.archunit:archunit-junit5-api:0.23.1"
+    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:0.23.1"
 }
 
 jar {
@@ -102,7 +104,8 @@ jacocoTestReport {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        maven(MavenPublication) {
+            from components.java
             pom {
                 name = 'jadenticon'
                 description = 'Jadenticon is a simple java wrapper for the Jdenticon javascript library to create nice looking, random identicons.'

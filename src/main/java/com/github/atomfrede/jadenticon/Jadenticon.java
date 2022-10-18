@@ -122,19 +122,10 @@ public class Jadenticon {
 
     private File createTempFile(String name, FileType fileType) throws IOException {
 
-        File file;
-
-        switch (fileType) {
-            case SVG:
-                file = File.createTempFile(name, ".svg");
-                break;
-            case PNG:
-                file = File.createTempFile(name, ".png");
-                break;
-            default:
-                file = File.createTempFile(name, ".svg");
-                break;
-        }
+        File file = switch (fileType) {
+            case PNG -> File.createTempFile(name, ".png");
+            case SVG -> File.createTempFile(name, ".svg");
+        };
 
         file.deleteOnExit();
         return file;

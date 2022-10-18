@@ -2,9 +2,9 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'maven-publish'
-    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
-    id "com.github.ben-manes.versions" version "0.42.0"
-    id "com.diffplug.spotless" version "6.4.2"
+    id 'pl.allegro.tech.build.axion-release' version '1.14.2'
+    id "com.github.ben-manes.versions" version "0.43.0"
+    id "com.diffplug.spotless" version "6.11.0"
     id "com.github.andygoossens.gradle-modernizer-plugin" version "1.6.2"
     id 'com.adarshr.test-logger' version '3.2.0'
 }
@@ -57,7 +57,7 @@ java {
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.8"
 }
 
 ext.moduleName = 'com.github.atomfrede.jadenticon'
@@ -71,14 +71,14 @@ repositories {
 
 dependencies {
     implementation "commons-io:commons-io:2.11.0"
-    implementation 'org.apache.xmlgraphics:batik-transcoder:1.14'
+    implementation 'org.apache.xmlgraphics:batik-transcoder:1.15'
     implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.7'
-    implementation 'org.apache.xmlgraphics:batik-codec:1.14'
-    implementation 'org.openjdk.nashorn:nashorn-core:15.3'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    implementation 'org.assertj:assertj-core:3.22.0'
-    testImplementation "com.tngtech.archunit:archunit-junit5-api:0.23.1"
-    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:0.23.1"
+    implementation 'org.apache.xmlgraphics:batik-codec:1.15'
+    implementation 'org.openjdk.nashorn:nashorn-core:15.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    implementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation "com.tngtech.archunit:archunit-junit5-api:1.0.0"
+    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:1.0.0"
 }
 
 jar {

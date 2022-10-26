@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.github.atomfrede:jadenticon:3.0.2'
+   compile 'com.github.atomfrede:jadenticon:3.0.3'
 }
 ```
 
@@ -33,7 +33,7 @@ dependencies {
 <dependency>
     <groupId>com.github.atomfrede</groupId>
     <artifactId>jadenticon</artifactId>
-    <version>3.0.2</version>
+    <version>3.0.3</version>
 </dependency>
 ```
 

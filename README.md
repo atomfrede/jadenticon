@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.github.atomfrede:jadenticon:3.0.3'
+   compile 'com.github.atomfrede:jadenticon:3.0.4'
 }
 ```
 

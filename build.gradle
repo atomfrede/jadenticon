@@ -2,9 +2,9 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'maven-publish'
-    id 'pl.allegro.tech.build.axion-release' version '1.15.5'
-    id "com.github.ben-manes.versions" version "0.49.0"
-    id "com.diffplug.spotless" version "6.22.0"
+    id 'pl.allegro.tech.build.axion-release' version '1.16.1'
+    id "com.github.ben-manes.versions" version "0.50.0"
+    id "com.diffplug.spotless" version "6.23.3"
     id "com.github.andygoossens.gradle-modernizer-plugin" version "1.9.0"
     id 'com.adarshr.test-logger' version '4.0.0'
 }
@@ -66,15 +66,15 @@ repositories {
 }
 
 dependencies {
-    implementation "commons-io:commons-io:2.11.0"
-    implementation 'org.apache.xmlgraphics:batik-transcoder:1.16'
-    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.8'
-    implementation 'org.apache.xmlgraphics:batik-codec:1.16'
+    implementation "commons-io:commons-io:2.15.1"
+    implementation 'org.apache.xmlgraphics:batik-transcoder:1.17'
+    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.9'
+    implementation 'org.apache.xmlgraphics:batik-codec:1.17'
     implementation 'org.openjdk.nashorn:nashorn-core:15.4'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testImplementation 'org.assertj:assertj-core:3.24.2'
-    testImplementation "com.tngtech.archunit:archunit-junit5-api:1.0.1"
-    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:1.0.1"
+    testImplementation "com.tngtech.archunit:archunit-junit5-api:1.2.1"
+    testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:1.2.1"
 }
 
 jar {

@@ -72,7 +72,7 @@ dependencies {
     implementation 'org.apache.xmlgraphics:batik-codec:1.17'
     implementation 'org.openjdk.nashorn:nashorn-core:15.4'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
-    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'org.assertj:assertj-core:3.25.1'
     testImplementation "com.tngtech.archunit:archunit-junit5-api:1.2.1"
     testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:1.2.1"
 }
